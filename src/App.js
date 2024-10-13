@@ -1,17 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import {atom} from "recoil";
+import {atom, useRecoilValue} from "recoil";
 import TodoItemCreator from "./components/TodoItemCreator";
 
-export const todoListState = atom({
-  key: 'todoListState',
-  default: [],
-});
-
 function App() {
+  const todoList = useRecoilValue(todoListState)
   return (
     <div className="App">
       <TodoItemCreator />
+      {todoList.map((todoItem) => {
+        <TodoItem key={todoItem.id} item={todoItem} />
+      })}
     </div>
   );
 }

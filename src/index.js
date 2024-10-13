@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {RecoilRoot} from "recoil";
+import {atom, RecoilRoot} from "recoil";
+
+export const todoListState = atom({
+    key: 'todoListState',
+    default: [],
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
