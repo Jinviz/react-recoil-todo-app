@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {atom} from "recoil";
+import TodoItemCreator from "./components/TodoItemCreator";
 
 export const todoListState = atom({
   key: 'todoListState',
@@ -10,6 +11,7 @@ export const todoListState = atom({
 function App() {
   return (
     <div className="App">
+      <TodoItemCreator />
     </div>
   );
 }
