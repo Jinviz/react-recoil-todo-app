@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSetRecoilState} from "recoil";
+import {todoListState} from "../todoAtoms";
 
 const TodoItemCreator = () => {
     const [inputValue, setInputValue] = useState("");
     const setTodoList = useSetRecoilState(todoListState);
 
-    const handleChange = (event) => {
-        setInputValue(event.target.value);
+    const handleChange = ({ target: {value} }) => {
+        setInputValue(value);
     }
 
     const addItem = () => {
@@ -18,11 +19,12 @@ const TodoItemCreator = () => {
                 isComplete: false,
             }
         ])
+        setInputValue('')
     }
 
     return(
         <div>
-            <input type="text" value={inputValue} onChange={}/>
+            <input type="text" value={inputValue} onChange={handleChange}/>
             <button onClick={addItem}>Add</button>
         </div>
     )
